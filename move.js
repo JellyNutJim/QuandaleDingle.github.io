@@ -38,7 +38,6 @@ function update()
         weno.style.background = newColour();
         weno.style.backgroundSize = "30px 30px";
     }
-    
    validate();
 }
 
