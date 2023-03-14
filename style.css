@@ -1,6 +1,6 @@
 
 html {
-    width: 80vw;
+    width: 100%;
     height: 200px;
     border-radius: 5px;
     background: linear-gradient(
@@ -19,14 +19,26 @@ html {
     );
 }
 
-h1, p{
+body
+{
+    position: relative;
+    min-height: 100vh;
+}
+
+
+#tierList
+{
     text-align: center;
 }
 
+#interaction
+{
+    padding-bottom: 100px;
+}
+
+
 footer{
-    
     position: fixed;
-    left: 0;
     bottom: 0;
     width: 100%;
     background-color: rgb(81, 255, 0);
