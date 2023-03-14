@@ -1,6 +1,7 @@
 
 #backgroundHTML {
     font-family: "Comic Sans MS", "Comic Sans";
+    src: url("comic-sans-ms/comici.ttf");
     width: 100%;
     height: 200px;
     border-radius: 5px;
