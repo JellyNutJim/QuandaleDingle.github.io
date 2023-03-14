@@ -33,7 +33,7 @@ function Square()
         c.fillStyle = 'rgb(' + r_colour() + ',' + r_colour() +  ',' + r_colour() + ')';
     }
 
-    if (y + h > canvas.height || y <= 0)
+    if (y + h >= canvas.height || y <= 0)
     {
         change_y = -change_y;
         c.fillStyle = 'rgb(' + r_colour() + ',' + r_colour() +  ',' + r_colour() + ')';
@@ -52,9 +52,8 @@ function SquareLoad()
     weno.src = "weno.png";
     canvas = document.getElementById("tv");
     c = canvas.getContext("2d");
-    x = Math.floor(Math.random() * canvas.width - w);
-    y = Math.floor(Math.random() * canvas.height - h);
-    console.log(r_colour());
+    x = Math.floor(Math.random() * (canvas.width - w));
+    y = Math.floor(Math.random() * (canvas.height - h));
     c.fillStyle = 'rgb(' + r_colour() + ',' + r_colour() +  ',' + r_colour() + ')';
 
     window.requestAnimationFrame(Square);

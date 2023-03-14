@@ -1,5 +1,5 @@
 
-html {
+#backgroundHTML {
     width: 100%;
     height: 200px;
     border-radius: 5px;
@@ -51,8 +51,20 @@ footer{
 canvas
 {
     border: 4px black solid;
+}
+
+canvas, button
+{
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+button
+{
+    margin-top: 30px;
+    padding: 7px;
+    border: 2px blue solid;
+    border-radius: 10px;
 }
     
