@@ -4,7 +4,7 @@ function change()
 {
     var grad;
 
-    switch(getRandomInt(4))
+    switch(getRandomInt(5))
     {
         case 0:
             // r
@@ -28,6 +28,11 @@ function change()
             if (current == 3) { change(); break;}
             current = 3;
             grad = r_rainbow();
+            break;
+        case 4:
+            if (current == 4) { change(); break;}
+            current = 4;
+            grad = "url('weno.png')";
             break;
     }
 
