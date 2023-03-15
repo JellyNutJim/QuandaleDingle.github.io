@@ -1,12 +1,14 @@
 var current = 0;
-var animate = false;
 var increase = 0;
 var up = true;
+var inter;
+var bg_b;
+var bg_g;
 
 function change()
 {
     var grad;
-    animate = false;
+    clearInterval(inter);
 
     switch(getRandomInt(6))
     {
@@ -100,11 +102,8 @@ function rainbow()
 function Bg_colour_change()
 {
     var grad = "linear-gradient(90deg,"
-    for (var i = 0; i < 10; i++)
-    {
-        grad += 'rgba(' + increase + ',' + r_colour() +  ',' + r_colour() + ',1)' + (i * 10) + "%,";
-    }
-    grad += 'rgba(' + increase + ',' + r_colour() +  ',' + r_colour() + ',1)' + (i * 10) + "%";
+    grad += 'rgba(' + increase + ',' + bg_g +  ',' + bg_b + ',1)' + 50 + "%,";
+    grad += 'rgba(' + increase * 2 + ',' + bg_g * 2 +  ',' + bg_b * 2 + ',1)' + 100 + "%";
     grad += ")";
     return grad;
 }
@@ -116,16 +115,18 @@ function getRandomInt(max)
 
 function StartBG()
 {
-    animate = true;
-    window.requestAnimationFrame(colourChangeBG);
+    inter = setInterval(colourChangeBG, 100);
+    bg_b = getRandomInt(255);
+    bg_g = getRandomInt(255);
 }
 
 function colourChangeBG()
 {
+    console.log("d");
     grad = Bg_colour_change();
     if (up)
     {
-        increase += 1;
+        increase += 10;
         if (increase >= 255)
         {
             up = false;
@@ -133,15 +134,11 @@ function colourChangeBG()
     }
     else
     {
-        increase -= 1;
-        if (increase <= 255)
+        increase -= 10;
+        if (increase <= 0)
         {
             up = true;
         }
     }
     document.getElementById("backgroundHTML").style.background = grad;
-    if (animate)
-    {
-        setInterval(colourChangeBG, 100);
-    }
 }
