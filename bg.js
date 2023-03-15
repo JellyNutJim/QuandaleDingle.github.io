@@ -1,10 +1,14 @@
 var current = 0;
+var animate = false;
+var increase = 0;
+var up = true;
 
 function change()
 {
     var grad;
+    animate = false;
 
-    switch(getRandomInt(5))
+    switch(getRandomInt(6))
     {
         case 0:
             // r
@@ -33,6 +37,13 @@ function change()
             if (current == 4) { change(); break;}
             current = 4;
             grad = "url('weno.png')";
+            break;
+        case 5:
+            if (current == 5) { change(); break;}
+            console.log("2");
+            current = 5;
+            animate = true;
+            StartBG();
             break;
     }
 
@@ -86,9 +97,51 @@ function rainbow()
     return "linear-gradient(90deg,rgba(255, 0, 0, 1) 0%,rgba(255, 154, 0, 1) 10%,rgba(208, 222, 33, 1) 20%,rgba(79, 220, 74, 1) 30%,rgba(63, 218, 216, 1) 40%,rgba(47, 201, 226, 1) 50%,rgba(28, 127, 238, 1) 60%,rgba(95, 21, 242, 1) 70%,rgba(186, 12, 248, 1) 80%,rgba(251, 7, 217, 1) 90%,rgba(255, 0, 0, 1) 100%)"
 }
 
-function getRandomInt(max)
+function Bg_colour_change()
 {
-    return Math.floor(Math.random() * max)
+    var grad = "linear-gradient(90deg,"
+    for (var i = 0; i < 10; i++)
+    {
+        grad += 'rgba(' + increase + ',' + r_colour() +  ',' + r_colour() + ',1)' + (i * 10) + "%,";
+    }
+    grad += 'rgba(' + increase + ',' + r_colour() +  ',' + r_colour() + ',1)' + (i * 10) + "%";
+    grad += ")";
+    return grad;
 }
 
+function getRandomInt(max)
+{
+    return Math.floor(Math.random() * max);
+}
 
+function StartBG()
+{
+    animate = true;
+    window.requestAnimationFrame(colourChangeBG);
+}
+
+function colourChangeBG()
+{
+    grad = Bg_colour_change();
+    if (up)
+    {
+        increase += 1;
+        if (increase >= 255)
+        {
+            up = false;
+        }
+    }
+    else
+    {
+        increase -= 1;
+        if (increase <= 255)
+        {
+            up = true;
+        }
+    }
+    document.getElementById("backgroundHTML").style.background = grad;
+    if (animate)
+    {
+        setInterval(colourChangeBG, 100);
+    }
+}
